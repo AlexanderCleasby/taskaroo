@@ -1,0 +1,12 @@
+<%= form_for @user, controller: 'users', class:"form-group" ,action: 'create' do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email, class:"form-control", placeholder:"Enter E-mail" %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class:"form-control", type:"password" %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class:"form-control", type:"password" %>
+
+  <%= f.submit "create" %>
+<% end %>
