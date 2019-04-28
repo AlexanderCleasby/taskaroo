@@ -1,24 +1,19 @@
-# README
+# Taskaroo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System requirments:
 
-Things you may want to cover:
+* Ruby 2.5.1
 
-* Ruby version
+* SQLite 
 
-* System dependencies
+## Setup:
 
-* Configuration
+*  ``` git clone ```
 
-* Database creation
+* ``` bundle i ```
 
-* Database initialization
+*  ``` rake db:migrate ```
 
-* How to run the test suite
+* ``` rails s ```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* navigate to localhost:3000
