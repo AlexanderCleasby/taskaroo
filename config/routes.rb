@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   resources :users, only: [:new, :create]
-
+  resources :lists
   root 'home#home'
 end
