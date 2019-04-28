@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
-    belongs_to :lists
+    belongs_to :list
 
 end
