@@ -1,7 +1,7 @@
 <h1><%=@list.title%></h1>
 <h5>Owner: <%= @list.owner.shortname %> </h5>
-<ul>
+<ul class="list-group">
     <% @list.tasks.each do |task|%>
-        <li> <%= task.title %> </li>
+        <li class="list-group-item list-group-item-action"> <%= task.title %> </li>
     <% end %>
 </ul>
