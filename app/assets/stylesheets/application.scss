@@ -14,6 +14,15 @@
  *= require_self
  */
 
- $body-bg: rgb(204, 204, 204);
+ $body-bg: rgb(31, 31, 31);
+
+
+ .page{
+     width: 90%;
+     margin: 1% 5%;
+     background-color: rgb(216, 216, 216);
+     box-shadow: 10px 10px 5px black;
+     padding:2%;
+ }
 
  @import "bootstrap"
