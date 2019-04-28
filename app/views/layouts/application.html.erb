@@ -13,7 +13,7 @@
     <a class="nav-link"> <%= session[:email] %> </a>
     
     <% if session[:email]  %>
-      <%= form_tag({controller:'sessions', action:'destroy'},:class=>"form-inline") do %>
+      <%= form_tag({controller:'sessions', action:'destroy'},{class:"form-inline"}) do %>
         <input class="btn btn-outline-danger" type=submit value='log out'>
       <% end %>
     <%else%>
