@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
+  post '/tasks/:id/toggle' => 'tasks#toggleCompleted'
+
   resources :users, only: [:new, :create]
   resources :lists
   root 'home#home'
