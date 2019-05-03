@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 
 gem 'bootstrap'
+gem 'font-awesome-sass'
 gem 'jquery-rails'
 
 # Use Capistrano for deployment

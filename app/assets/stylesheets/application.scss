@@ -14,14 +14,34 @@
  *= require_self
  */
 
- $body-bg: rgb(31, 31, 31);
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
- .listDo{
-     height: 100%;
-     display: flex;
-     align-items: center;
 
- }
+$body-bg: rgb(31, 31, 31);
+
+.done{
+    @extend .btn-outline-success;
+}
+
+.done:hover{
+    @extend .btn-outline-danger;
+    .fa-check{
+       @extend .fa-times;
+    }
+}
+
+.not-done{
+    @extend .btn-outline-danger;
+}
+
+.not-done:hover{
+    @extend .btn-outline-success;
+    .fa-times{
+        @extend .fa-check;
+    }
+}
+
 .form-inline{
     height: 100%;
 }

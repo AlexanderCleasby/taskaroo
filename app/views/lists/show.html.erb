@@ -4,14 +4,13 @@
     <% @list.tasks.each do |task|%>
         <% done = task.completed ? "done" : "not-done"%>
         <% icon = task.completed ? "check" : "times"%>
-        <% color = task.completed ? "success" : "danger"  %>
-        <li class="list-group-item d-flex  align-items-start listDo">
+        <li class= "list-group-item d-flex  align-items-start listDo" >
             <%= form_tag("/tasks/#{task.id}/toggle",{class:"form-inline align-middle"} ) do %>
-                <%= button_tag(type: "submit", class: "btn btn-outline-#{color}") do %>
+                <%= button_tag(type: "submit", class: "btn   #{done}") do %>
                     <i class="fas fa-<%= icon %>"></i>
                 <% end %>
             <% end %> 
-            <div class="display-4"><%= task.title %></div>
+            <div class="ml-3" ><%= task.title %></div>
         </li>
     <% end %>
 
