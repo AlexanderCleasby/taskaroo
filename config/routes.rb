@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :lists
+  resources :tasks
   root 'home#home'
 end

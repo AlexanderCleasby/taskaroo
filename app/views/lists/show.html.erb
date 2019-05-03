@@ -2,16 +2,24 @@
 <h5>Owner: <%= @list.owner.shortname %> </h5>
 <ul class="list-group">
     <% @list.tasks.each do |task|%>
-        <% done = task.completed ? "done" : "not-done"%>
-        <% icon = task.completed ? "check" : "times"%>
-        <li class= "list-group-item d-flex  align-items-start listDo" >
-            <%= form_tag("/tasks/#{task.id}/toggle",{class:"form-inline align-middle"} ) do %>
-                <%= button_tag(type: "submit", class: "btn   #{done}") do %>
-                    <i class="fas fa-<%= icon %>"></i>
-                <% end %>
-            <% end %> 
-            <div class="ml-3" ><%= task.title %></div>
-        </li>
+    <% done = task.completed ? "done" : "not-done"%>
+    <% icon = task.completed ? "check" : "times"%>
+    <li class="list-group-item d-flex  align-items-start listDo">
+        <%= form_tag("/tasks/#{task.id}/toggle",{class:"form-inline align-middle"} ) do %>
+            <%= button_tag(type: "submit", class: "btn   #{done}") do %>
+                <i class="fas fa-<%= icon %>"></i>
+            <% end %>
+        <% end %>
+        <div class="ml-3"><%= task.title %></div>
+    </li>
     <% end %>
-
+    <li class="list-group-item d-flex  align-items-start listDo">
+        <%= form_for @list.tasks.build, :html => {:class => 'form-inline align-middle'} do |f| %>
+            <%= button_tag(type:"submit", class:"btn btn-outline-dark") do %>
+                <i class="fas fa-plus"></i>
+            <% end %>
+            <%= f.text_area :title %>
+            <%= f.hidden_field :list_id %>
+        <% end %>
+    </li>
 </ul>
