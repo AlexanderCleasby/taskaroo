@@ -2,7 +2,8 @@ require 'pry'
 class TasksController < ApplicationController
 
     def toggleCompleted
-        @task=Task.find_by(params[:id])
+        @task=Task.find_by({id:params[:id]})
+        #binding.pry
         if @task
             @task.update({completed:!@task.completed})
         end
