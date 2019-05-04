@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_05_04_180119) do
     t.integer "list_id"
     t.boolean "completed", default: false
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
