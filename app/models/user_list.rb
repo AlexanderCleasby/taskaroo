@@ -1,4 +1,4 @@
-class UserList
-    belong_to :lists
-    belong_to :users
+class UserList < ApplicationRecord
+    belongs_to :list
+    belongs_to :user
 end

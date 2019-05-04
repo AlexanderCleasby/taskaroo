@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 2019_05_04_180119) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-  end
-
-  create_table "users_lists", force: :cascade do |t|
+  create_table "user_lists", force: :cascade do |t|
     t.integer "list_id"
     t.integer "user_id"
     t.string "privilege"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
   end
 
 end
