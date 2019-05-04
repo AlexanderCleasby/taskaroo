@@ -44,6 +44,11 @@ $body-bg: rgb(31, 31, 31);
     }
 }
 
+.newTask{
+    @extend .ml-3;
+    
+}
+
 //end list show
 
 .form-inline{

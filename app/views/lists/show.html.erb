@@ -18,7 +18,7 @@
             <%= button_tag(type:"submit", class:"btn btn-outline-dark") do %>
                 <i class="fas fa-plus"></i>
             <% end %>
-            <%= f.text_area :title %>
+            <%= f.text_field( :title, class:"newTask") %>
             <%= f.hidden_field :list_id %>
         <% end %>
     </li>
