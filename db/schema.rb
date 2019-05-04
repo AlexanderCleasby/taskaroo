@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_28_165634) do
+ActiveRecord::Schema.define(version: 2019_05_04_180119) do
 
   create_table "lists", force: :cascade do |t|
     t.integer "owner_id"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_165634) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer "list_id"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.string "title"
   end
 
