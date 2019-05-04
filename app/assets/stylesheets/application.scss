@@ -20,6 +20,8 @@
 
 $body-bg: rgb(31, 31, 31);
 
+//list show
+
 .done{
     @extend .btn-outline-success;
 }
@@ -41,6 +43,8 @@ $body-bg: rgb(31, 31, 31);
         @extend .fa-check;
     }
 }
+
+//end list show
 
 .form-inline{
     height: 100%;
