@@ -1,7 +1,7 @@
 require 'pry'
 class ListsController < ApplicationController
-    before_action :require_logged_in
-    
+    before_action :require_logged_in, :confirm_list_exists, :require_list_permissions
+
     def new
         @list=List.new
     end
