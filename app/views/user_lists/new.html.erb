@@ -1,0 +1,10 @@
+<h3>Add Users to <b> <%= @user_list.list.title %> </b></h3>
+
+<%= form_tag({name:"user_list",controller:'user_lists',action:'create'}) do  %>
+    <input type='text' name='email' class="form-control" >
+    <select name='privilege' class="form-control">
+        <option>Add Tasks</option>
+        <option>Only Do Tasks</option>
+    </select>
+    <input class="btn btn-outline-danger" type=submit value='Add User'>
+<% end %>

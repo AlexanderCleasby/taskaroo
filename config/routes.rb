@@ -6,8 +6,14 @@ Rails.application.routes.draw do
 
   post '/tasks/:id/toggle' => 'tasks#toggleCompleted'
 
+  scope 'lists/:id' do
+    get '/add_users' => 'user_lists#new'
+    post '/add_users' => 'user_lists#create'
+  end
+
   resources :users, only: [:new, :create]
   resources :lists
   resources :tasks
+
   root 'home#home'
 end
