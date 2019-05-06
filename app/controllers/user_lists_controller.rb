@@ -6,7 +6,8 @@ class UserListsController < ApplicationController
     end
     
     def create
-        @user_list = UserList.new(user_lists_params)
+        @user_list = UserList.new()
+        @user_list.privilege = params[:privilege]
         @user_list.user = User.find_by(:email=>params[:email])
         @user_list.list = List.find_by(:id=>params[:id])
         @user_list.save
