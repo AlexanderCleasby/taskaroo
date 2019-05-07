@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   scope 'lists/:id' do
     get '/add_users' => 'user_lists#new'
     post '/add_users' => 'user_lists#create'
+    resources :tasks
   end
 
   resources :users, only: [:new, :create]
   resources :lists
-  resources :tasks
+  
 
   root 'home#home'
 end
