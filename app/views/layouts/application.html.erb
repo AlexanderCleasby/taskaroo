@@ -11,9 +11,9 @@
   </head>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Taskaroo</a>
-    <a class="nav-link"> <%= session[:email] %> </a>
+    <a class="nav-link"> <%= User.find(session[:user_id]).email %> </a>
     
-    <% if session[:email]  %>
+    <% if User.find(session[:user_id]).email  %>
       <%= form_tag({controller:'sessions', action:'destroy'},{class:"form-inline"}) do %>
         <input class="btn btn-outline-danger" type=submit value='log out'>
       <% end %>
