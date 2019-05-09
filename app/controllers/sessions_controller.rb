@@ -1,4 +1,4 @@
-
+require 'pry'
 class SessionsController < ApplicationController
     def new
       @user = User.new
@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
       user = User.find_by(email: params[:user][:email])
   
       user = user.try(:authenticate, params[:user][:password])
-      puts user
       return redirect_to(controller: 'sessions', action: 'new') unless user
   
       session[:user_id] = user.id
@@ -18,11 +17,32 @@ class SessionsController < ApplicationController
   
       redirect_to controller: 'home', action: 'home'
     end
-  
+    
+    def createfacebook
+
+      @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        u.email = auth['info']['email']
+        u.password=auth['uid']
+      end
+      
+      binding.pry
+      session[:user_id] = @user.id
+      redirect_to controller: 'home', action: 'home'
+    end
+
     def destroy
       session.delete :user_id
       session.delete :email
       redirect_to '/'
     end
+
+    private
+
+    private
+
+    def auth
+      request.env['omniauth.auth']
+    end
+
   end
   

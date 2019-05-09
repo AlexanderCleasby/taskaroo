@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post '/tasks/:id/toggle' => 'tasks#toggleCompleted'
 
+  get '/auth/facebook/callback' => 'sessions#createfacebook'
+
   scope 'lists/:id' do
     get '/add_users' => 'user_lists#new'
     post '/add_users' => 'user_lists#create'

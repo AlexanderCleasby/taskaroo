@@ -7,6 +7,7 @@
   <%= f.password_field :password %>
 
   <%= f.submit "log in" %>
+  <a href='/auth/facebook'>Login with Facebook</a>
   Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
 <% end %>
 
