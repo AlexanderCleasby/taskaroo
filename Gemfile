@@ -33,6 +33,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+gem 'thin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
