@@ -3,16 +3,18 @@ class TasksController < ApplicationController
     before_action :require_logged_in
 
     def create
-        #binding.pry
-        task = Task.new(task_params)
-        #binding.pry
+        if !require_list_write_permissions
         
-        if task.save
-          flash[:success] = "Object successfully created"
-          redirect_to task.list
-        else
-          flash[:error] = "Something went wrong"
-          render 'new'
+            task = Task.new(task_params)
+            #binding.pry
+            
+            if task.save
+              flash[:success] = "Task Added"
+              redirect_to task.list
+            else
+              flash[:error] = "Task not added"
+              redirect_to List.find(params[:task][:list_id])
+            end
         end
     end
     
@@ -31,6 +33,14 @@ class TasksController < ApplicationController
 
     def task_params
         params.require(:task).permit(:completed,:title,:list_id)
+    end
+
+    def require_list_write_permissions
+        if List.find(params[:id]).user_lists.where({privilege:"Add Tasks",user_id:session[:user_id]}) && List.find(params[:id]).owner_id != session[:user_id]
+            redirect_to List.find(params[:task][:list_id])
+        else
+            false
+        end
     end
 
 
