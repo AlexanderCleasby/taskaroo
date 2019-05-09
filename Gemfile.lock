@@ -85,6 +85,8 @@ GEM
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.10.0)
+    flash_rails_messages (1.0.0)
+      rails (>= 4.0)
     font-awesome-sass (5.8.1)
       sassc (>= 1.11)
     globalid (0.4.2)
@@ -228,6 +230,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  flash_rails_messages
   font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
