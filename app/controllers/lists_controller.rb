@@ -1,6 +1,7 @@
 require 'pry'
 class ListsController < ApplicationController
     before_action :require_logged_in, :confirm_list_exists, :require_list_permissions
+    skip_before_action  :confirm_list_exists, :require_list_permissions, only: [:new, :create]
 
     def new
         @list=List.new
@@ -12,10 +13,8 @@ class ListsController < ApplicationController
         @list.owner_id = session[:user_id]
         #binding.pry
         if @list.save
-          flash[:success] = "Object successfully created"
           redirect_to @list
         else
-          flash[:error] = "Something went wrong"
           render 'new'
         end
     end
