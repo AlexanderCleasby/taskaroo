@@ -14,12 +14,16 @@
     </li>
     <% end %>
     <li class="list-group-item d-flex  align-items-start listDo">
-        <%= form_for @list.tasks.build, :html => {:class => 'form-inline align-middle'} do |f| %>
-            <%= button_tag(type:"submit", class:"btn btn-outline-dark") do %>
-                <i class="fas fa-plus"></i>
+        <% if @list.canwrite(session[:user_id]) then %>
+            <%= form_for @list.tasks.build, :html => {:class => 'form-inline align-middle'} do |f| %>
+                <%= button_tag(type:"submit", class:"btn btn-outline-dark") do %>
+                    <i class="fas fa-plus"></i>
+                <% end %>
+                <%= f.text_field( :title, class:"newTask") %>
+                <%= f.hidden_field :list_id %>
             <% end %>
-            <%= f.text_field( :title, class:"newTask") %>
-            <%= f.hidden_field :list_id %>
+        <% else %>
+            You do not have permissions to add tasks to this list.
         <% end %>
     </li>
 </ul>
