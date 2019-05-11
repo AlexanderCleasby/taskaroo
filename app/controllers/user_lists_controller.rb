@@ -10,9 +10,11 @@ class UserListsController < ApplicationController
         @user_list.privilege = params[:privilege]
         @user_list.user = User.find_by(:email=>params[:email])
         @user_list.list = List.find_by(:id=>params[:id])
-        @user_list.save
-        
-        redirect_to @user_list.list
+        if @user_list.save
+            redirect_to @user_list.list
+        else
+            render 'new'
+        end
     end
 
 

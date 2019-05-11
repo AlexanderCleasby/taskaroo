@@ -1,6 +1,13 @@
 <h3>Add Users to <b> <%= @user_list.list.title %> </b></h3>
 
 <%= form_tag({name:"user_list",controller:'user_lists',action:'create'}) do  %>
+      <% if @user_list.errors.any? %>
+        <div>
+            <% @user_list.errors.full_messages.each do |message| %>
+              <div class="alert alert-danger"><%= message %></div>
+            <% end %>
+        </div>
+    <% end %>
     <input type='text' name='email' class="form-control" >
     <select name='privilege' class="form-control">
         <option>Add Tasks</option>
