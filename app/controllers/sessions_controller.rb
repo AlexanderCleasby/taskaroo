@@ -25,8 +25,9 @@ class SessionsController < ApplicationController
         u.password=auth['uid']
       end
       
-      binding.pry
+      
       session[:user_id] = @user.id
+      session[:email] = @user.email
       redirect_to controller: 'home', action: 'home'
     end
 

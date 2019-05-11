@@ -1,13 +1,13 @@
 
-<%= form_for @user, url: login_path, method: :post do |f| %>
+<%= form_for @user, url: login_path, method: :post, class: 'form-group'  do |f| %>
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, class:"form-control" %>
 
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, class:"form-control" %>
 
   <%= f.submit "log in" %>
-  <a href='/auth/facebook'>Login with Facebook</a>
+  <a class='loginProvider btn btn-outline-primary' href='/auth/facebook'>Log in with: <i class="fab fa-facebook-f"></i></a>
   Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
 <% end %>
 
