@@ -57,6 +57,7 @@ $body-bg: rgb(31, 31, 31);
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
+    border-bottom: 10px solid $dark;
     li {
         background-color: $light;
         display: block;
