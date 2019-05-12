@@ -18,4 +18,8 @@ class List < ApplicationRecord
         end
     end
 
+    def completion
+        self.tasks.select {|task| task.completed }.count.to_s+"/"+self.tasks.count.to_s
+    end
+
 end

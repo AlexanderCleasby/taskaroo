@@ -1,0 +1,14 @@
+
+<ul class='listIndex'>
+<% lists.each do |list| %>
+    <li>
+        <h3><%= list.title %></h3>
+        <i class="fas fa-clipboard-list"></i>
+        <%= list.completion + ' tasks completed.' %>
+        <br>
+        <%= link_to({controller:'lists',action: 'show',id:list.id},class:'btn btn-outline-primary'){'GO'}%>
+    </li>
+<% end %>
+
+<%= "Nothing to see here!" unless lists.count > 0 %>
+</ul>

@@ -20,6 +20,7 @@
 
 $body-bg: rgb(31, 31, 31);
 
+@import "bootstrap";
 //list show
 
 .done{
@@ -51,6 +52,30 @@ $body-bg: rgb(31, 31, 31);
 
 //end list show
 
+//list index
+.listIndex{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    li {
+        background-color: $light;
+        display: block;
+        color: $dark; 
+        margin: 5px;
+        padding:1%;
+        height: 150px;
+        min-width: 180px;
+        text-align: center;
+        i{
+            font-size: 200%;
+            width:100%;
+        }
+    }
+}
+
+
+//end list index
+
 .loginProvider{
     
     display: block;
@@ -72,4 +97,4 @@ $body-bg: rgb(31, 31, 31);
      padding:2% 10%;
  }
 
- @import "bootstrap"
+ 
