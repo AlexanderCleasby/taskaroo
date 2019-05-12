@@ -3,3 +3,4 @@
 <%= render partial:'lists/index', locals:{lists:@owned_lists} %>
 <h3>lists shared with you:</h3>
 <%= render partial:'lists/index', locals:{lists:@shared_lists} %>
+<%= link_to({controller:'lists',action: 'new'},class:'xl btn btn-outline-success'){'Create A New List'}%>
