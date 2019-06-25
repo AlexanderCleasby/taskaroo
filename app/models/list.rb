@@ -1,21 +1,29 @@
+require 'pry'
 class List < ApplicationRecord
     has_many :tasks 
     has_many :user_lists
     has_many :users, through: :user_lists
     accepts_nested_attributes_for :tasks
 
+    def self.owned(user)
+        List.where(:owner_id=>user.id)
+    end
+
+    def self.can_be_written_by(user)       
+        user.lists.joins(:user_lists).where(user_lists:{privilege:"Add Tasks"})
+    end
+
+    def self.writeable
+        self.joins(:user_lists).where(user_lists:{privilege:"Add Tasks"})
+    end
+
     def owner
         User.find(owner_id)
     end
 
-    def canwrite(id)
-        if self.owner_id==id
-            return true
-        elseif self.user_lists.find_by({user_id:id})
-            return self.user_lists.find_by({user_id:id}).privilege
-        else
-            false
-        end
+    def can_be_written_by(user)
+        List.can_be_written_by(user).include?(self) || self.owner_id==user.id
+        
     end
 
     def completion

@@ -14,7 +14,7 @@
     </li>
     <% end %>
     <li class="list-group-item d-flex  align-items-start listDo">
-        <% if @list.canwrite(session[:user_id]) then %>
+        <%  if @list.can_be_written_by(current_user) then %>
             <%= form_for @list.tasks.build, :html => {:class => 'form-inline align-middle'} do |f| %>
                 <%= button_tag(type:"submit", class:"btn btn-outline-dark") do %>
                     <i class="fas fa-plus"></i>
@@ -23,6 +23,7 @@
                 <%= f.hidden_field :list_id %>
             <% end %>
         <% else %>
+            <br>
             You do not have permissions to add tasks to this list.
         <% end %>
     </li>
