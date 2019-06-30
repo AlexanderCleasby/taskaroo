@@ -27,6 +27,7 @@ class Task {
         let icon = document.createElement('i')
 
         //Apply appropriate styles to the new elements
+        //TODO: we can use scss to consolidate this.
         ls.className = "list-group-item d-flex  align-items-start listDo"
         title.className = "ml-3"
         button.className = this.completed ? "btn done toggle" : "btn not-done toggle"
