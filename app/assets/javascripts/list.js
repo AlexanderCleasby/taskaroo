@@ -9,14 +9,16 @@ class Task {
         this.id = id
     }
 
-    toggleComplete(){
-        fetch(`/tasks/${this.id}/toggle`,{method:"POST"})
-        .then(res=>res.json())
-        .then(res => {
-            this.completed = res.completed
-            refresh()
-        })
-        
+    toggleComplete() {
+        fetch(`/tasks/${this.id}/toggle`, {
+                method: "POST"
+            })
+            .then(res => res.json())
+            .then(res => {
+                this.completed = res.completed
+                refresh()
+            })
+
     }
 
     render() {
@@ -35,7 +37,7 @@ class Task {
 
         //add an event listener to the button to toggle the class's completion state
         //binding this so we can access the task instance method inside of the callback
-        button.addEventListener('click',this.toggleComplete.bind(this))
+        button.addEventListener('click', this.toggleComplete.bind(this))
 
         //wrap the new elements into each other
         button.prepend(icon)
@@ -51,9 +53,9 @@ class Task {
 refresh = () => {
     ul = document.getElementById('list-body')
     ul.innerHTML = ''
-    
+
     tasks.forEach((task) => {
-        
+
         ul.appendChild(task.render())
     })
 }
@@ -62,11 +64,29 @@ getTasks = () => {
     fetch(`/lists/${document.getElementById('list-id').innerHTML}.json`)
         .then((x) => x.json())
         .then((list) => {
-            tasks = list.tasks.map((task)=>new Task(task.id, task.title, task.completed))
+            tasks = list.tasks.map((task) => new Task(task.id, task.title, task.completed))
             refresh()
             return tasks
         })
 }
 
+
+
+if (document.getElementById('new_task')) {
+    document.getElementById('new_task').addEventListener('submit', (e) => {
+        e.preventDefault()
+        fetch(`/lists/${document.getElementById('list-id').innerHTML}/tasks`, {
+                method: 'POST',
+                body: new FormData(e.target)
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                getTasks()
+                document.getElementById('task_title').value = ''
+
+            })
+
+    })
+}
 
 getTasks()

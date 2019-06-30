@@ -11,8 +11,8 @@ class TasksController < ApplicationController
         #binding.pry
         
         if task.save
-        
-          redirect_to task.list
+            render :json => task
+            #redirect_to task.list
         else
           
           redirect_to List.find(params[:task][:list_id])
