@@ -3,6 +3,7 @@ class TasksController < ApplicationController
     before_action :require_logged_in
     before_action :require_list_permissions, only: :toggle
     before_action :require_list_write_permissions, only: [:create,:update]
+    skip_before_action :verify_authenticity_token, only: :toggleCompleted
     def create
         
         
@@ -27,12 +28,14 @@ class TasksController < ApplicationController
         
 
     def toggleCompleted
+        
         @task=Task.find_by({id:params[:id]})
         #binding.pry
         if @task
             @task.update({completed:!@task.completed})
         end
-        redirect_to controller:"lists",action: "show", id: @task.list.id
+        render :json => @task
+        #redirect_to controller:"lists",action: "show", id: @task.list.id
     end
 
     private
