@@ -71,22 +71,25 @@ getTasks = () => {
 }
 
 
+document.addEventListener("turbolinks:load", () => {
+    if (document.getElementById('new_task')) {
+        document.getElementById('new_task').addEventListener('submit', (e) => {
+            e.preventDefault()
+            fetch(`/lists/${document.getElementById('list-id').innerHTML}/tasks`, {
+                    method: 'POST',
+                    body: new FormData(e.target)
+                })
+                .then((res) => res.json())
+                .then((res) => {
+                    getTasks()
+                    document.getElementById('task_title').value = ''
 
-if (document.getElementById('new_task')) {
-    document.getElementById('new_task').addEventListener('submit', (e) => {
-        e.preventDefault()
-        fetch(`/lists/${document.getElementById('list-id').innerHTML}/tasks`, {
-                method: 'POST',
-                body: new FormData(e.target)
-            })
-            .then((res) => res.json())
-            .then((res) => {
-                getTasks()
-                document.getElementById('task_title').value = ''
+                })
 
-            })
+        })
+    }
 
-    })
-}
-
-getTasks()
+    if (document.getElementById('list-id')) {
+        getTasks()
+    }
+})
