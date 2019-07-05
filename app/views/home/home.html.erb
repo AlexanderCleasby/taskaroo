@@ -1,6 +1,10 @@
 <h1>Hi, <%= session[:user_id] ? User.find(session[:user_id]).shortname : "User"  %></h1>
 <h3>Your owned lists:</h3>
-<%= render partial:'lists/index', locals:{lists:@owned_lists} %>
+<ul id="owned-lists" class='listIndex'>
+    <p>Nothing to see here </p>
+</ul>
 <h3>lists shared with you:</h3>
-<%= render partial:'lists/index', locals:{lists:@shared_lists} %>
+<ul id="shared-lists" class='listIndex'>
+    <p>Nothing to see here </p>
+</ul>
 <%= link_to({controller:'lists',action: 'new'},class:'xl btn btn-outline-success'){'Create A New List'}%>

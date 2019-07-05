@@ -1,7 +1,7 @@
 require 'pry'
 class ListsController < ApplicationController
     before_action :require_logged_in, :confirm_list_exists, :require_list_permissions
-    skip_before_action  :confirm_list_exists, :require_list_permissions, only: [:new, :create]
+    skip_before_action  :confirm_list_exists, :require_list_permissions, only: [:new, :create, :index]
 
     def new
         @list=List.new
@@ -30,7 +30,13 @@ class ListsController < ApplicationController
     
 
     def index
-        @list = List.all
+        if params[:selector] == 'owned'
+            @lists = List.owned(current_user)
+        elsif params[:shared]
+            @lists = List.can_be_written_by(current_user)
+        end
+        render json:@lists
+        
     end
 
     private
