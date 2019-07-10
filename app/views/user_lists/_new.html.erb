@@ -1,4 +1,4 @@
-<h3>Add Users to <b> <%= @user_list.list.title %> </b></h3>
+<h3>Add Users to <b> <%= @list.title %> </b></h3>
 
 <%= form_tag({name:"user_list",controller:'user_lists',action:'create'}) do  %>
       <% if @user_list.errors.any? %>

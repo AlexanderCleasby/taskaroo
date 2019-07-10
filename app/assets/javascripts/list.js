@@ -70,12 +70,23 @@ getTasks = () => {
         })
 }
 
+userListModalShow = () => {
+    let modal = document.getElementById("add-user-list-modal")
+    modal.style.display = "block";
+    modal.className = "modal fade show";
+    document.getElementById("add-user-list-modal-close").addEventListener('click',userListModalHide)
+}
+
+userListModalHide = ()=>{
+    document.getElementById("add-user-list-modal").style.display = "none";
+    document.getElementById("add-user-list-modal").className = "modal fade";
+}
 
 document.addEventListener("turbolinks:load", () => {
     if (document.getElementById('new_task')) {
         document.getElementById('new_task').addEventListener('submit', (e) => {
             e.preventDefault()
-            fetch(`/lists/${document.getElementById('list-id').innerHTML}/tasks`, {
+            fetch(e.target.action, {
                     method: 'POST',
                     body: new FormData(e.target)
                 })
@@ -91,5 +102,9 @@ document.addEventListener("turbolinks:load", () => {
 
     if (document.getElementById('list-id')) {
         getTasks()
+    }
+
+    if (document.getElementById("add-user-list-modal-show")){
+        document.getElementById("add-user-list-modal-show").addEventListener('click',userListModalShow)
     }
 })

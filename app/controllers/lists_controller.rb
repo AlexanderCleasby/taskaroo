@@ -21,6 +21,9 @@ class ListsController < ApplicationController
 
     def show
         @list = List.find(params[:id])
+        if @list.owner == current_user then
+            @user_list = UserList.new
+        end
         respond_to do |format|
             format.html { render :show }
             format.json { render json:@list}
