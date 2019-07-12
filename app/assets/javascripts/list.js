@@ -23,14 +23,14 @@ class Task {
 
     render() {
         // Create the elements that comprise the list variable
-        let ls = document.createElement('ls')
+        let li = document.createElement('li')
         let title = document.createElement('div')
         let button = document.createElement('button')
         let icon = document.createElement('i')
 
         //Apply appropriate styles to the new elements
         //TODO: we can use scss to consolidate this.
-        ls.className = "list-group-item d-flex  align-items-start listDo"
+        li.className = "list-group-item d-flex  align-items-start listDo"
         title.className = "ml-3"
         button.className = this.completed ? "btn done toggle" : "btn not-done toggle"
         icon.className = this.completed ? "fas fa-check" : "fas fa-times"
@@ -42,11 +42,11 @@ class Task {
         //wrap the new elements into each other
         button.prepend(icon)
         title.innerHTML = this.title
-        ls.prepend(title)
-        ls.prepend(button)
+        li.prepend(title)
+        li.prepend(button)
 
         //return new object
-        return ls
+        return li
     }
 }
 
