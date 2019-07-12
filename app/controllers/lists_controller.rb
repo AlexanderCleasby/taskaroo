@@ -35,10 +35,10 @@ class ListsController < ApplicationController
     def index
         if params[:selector] == 'owned'
             @lists = List.owned(current_user)
-        elsif params[:shared]
+        elsif params[:selector] == 'shared'
             @lists = List.can_be_written_by(current_user)
         end
-        render json:@lists
+        render json:@lists, each_serializer: ListSummarySerializer
         
     end
 
