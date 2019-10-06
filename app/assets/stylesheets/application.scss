@@ -27,25 +27,15 @@ $body-bg: rgb(31, 31, 31);
     @extend .btn-outline-success;
 }
 
-.done:hover{
-    @extend .btn-outline-danger;
-    .fa-check{
-       @extend .fa-times;
-    }
-}
+
 
 .not-done{
     @extend .btn-outline-danger;
 }
 
-.not-done:hover{
-    @extend .btn-outline-success;
-    .fa-times{
-        @extend .fa-check;
-    }
-}
 
 .newTask{
+    max-width: 60%;
     @extend .ml-3;
     
 }
