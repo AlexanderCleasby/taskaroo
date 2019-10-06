@@ -1,6 +1,10 @@
 <h1><%=@list.title%></h1>
 <h5>Owner: <%= @list.owner.shortname %> </h5>
 <div id='list-id' style="display:none"><%= @list.id%></div>
+<% if @user_list.errors.any? then %>
+  <div class="alert alert-danger"> <%=params[:email]+" is not the email of a user of Taskaroo" %> </div>
+<% end %>
+
 <ul  class="list-group">
     <ul id="list-body" class="list-group">
     </ul>
