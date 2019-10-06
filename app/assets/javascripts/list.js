@@ -16,7 +16,6 @@ class Task {
             .then(res => res.json())
             .then(res => {
                 this.completed = res.completed
-                refresh()
             })
 
     }
@@ -32,12 +31,20 @@ class Task {
         //TODO: we can use scss to consolidate this.
         li.className = "list-group-item d-flex  align-items-start listDo"
         title.className = "ml-3"
-        button.className = this.completed ? "btn done toggle" : "btn not-done toggle"
+        button.className = this.completed ? "btn done toggle" : "btn not-done"
         icon.className = this.completed ? "fas fa-check" : "fas fa-times"
 
         //add an event listener to the button to toggle the class's completion state
         //binding this so we can access the task instance method inside of the callback
         button.addEventListener('click', this.toggleComplete.bind(this))
+        button.addEventListener("mouseenter",(e)=>
+            {e.target.className=!this.completed ? "btn done" : "btn not-done"
+            icon.className = !this.completed ? "fas fa-check" : "fas fa-times"})
+
+        button.addEventListener("mouseleave",(e)=>{
+            button.className = this.completed ? "btn done " : "btn not-done toggle"
+            icon.className = this.completed ? "fas fa-check" : "fas fa-times"
+        })
 
         //wrap the new elements into each other
         button.prepend(icon)
@@ -53,7 +60,7 @@ class Task {
 refresh = () => {
     ul = document.getElementById('list-body')
     ul.innerHTML = ''
-
+    
     tasks.forEach((task) => {
 
         ul.appendChild(task.render())
