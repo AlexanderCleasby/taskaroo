@@ -1,4 +1,4 @@
-require 'pry'
+
 class TasksController < ApplicationController
     before_action :require_logged_in
     before_action :require_list_permissions, only: :toggle
@@ -8,7 +8,7 @@ class TasksController < ApplicationController
         
         
         task = Task.new(task_params)
-        #binding.pry
+        
         
         if task.save
             render :json => task
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     def toggleCompleted
         
         @task=Task.find_by({id:params[:id]})
-        #binding.pry
+        
         if @task
             @task.update({completed:!@task.completed})
         end

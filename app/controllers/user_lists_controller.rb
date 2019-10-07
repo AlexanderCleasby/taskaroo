@@ -1,4 +1,4 @@
-require 'pry'
+
 class UserListsController < ApplicationController
     def new
         @user_list = UserList.new

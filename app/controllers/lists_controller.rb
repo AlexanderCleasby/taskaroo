@@ -1,4 +1,4 @@
-require 'pry'
+
 class ListsController < ApplicationController
     before_action :require_logged_in, :confirm_list_exists, :require_list_permissions
     skip_before_action  :confirm_list_exists, :require_list_permissions, only: [:new, :create, :index]
@@ -11,7 +11,7 @@ class ListsController < ApplicationController
         
         @list = List.new(lists_params)
         @list.owner_id = session[:user_id]
-        #binding.pry
+        
         if @list.save
           redirect_to @list
         else
