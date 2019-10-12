@@ -1,19 +1,19 @@
 # Taskaroo
 
-## System requirments:
+## System requirments
 
 * Ruby 2.5.1
 
-* SQLite 
+* SQLite
 
-## Setup:
+## Setup
 
-*  ``` git clone ```
+* ```git clone```
 
-* ``` bundle i ```
+* ```bundle i```
 
-*  ``` rake db:migrate ```
+* ```rake db:migrate```
 
-* ``` rails s ```
+* ```rails s```
 
 * navigate to localhost:3000
